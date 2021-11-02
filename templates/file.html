@@ -1,0 +1,59 @@
+<html>
+<head>
+	<title> flask pingpong</title>
+    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js" integrity="sha384-KAZ4DtjNhLChOB/hxXuKqhMLYvx3b5MlT55xPEiNmREKRzeEm+RVPlTnAn0ajQNs" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<div id="header"> 
+		<p id="value">Streaming Video</p> 
+	</div>
+
+    <div class="player">
+        <img id="1">
+    </div>
+	
+    <div class="button_list">
+        <button id="SETUP">
+            SETUP
+        </button>
+        
+        <button id="PLAY">
+            PLAY
+        </button>
+        
+        
+        <button id="PAUSE">
+            PAUSE
+        </button>
+    </div>
+	<script type="text/javascript" charset="utf-8">
+		const socket = io();
+        let INIT = 0;
+        let READY = 1;
+        let PLAYING = 2;
+
+        socket.on('response', function(msg){
+            const img = document.getElementById(1);
+            img.src = "data:image/jpeg;base64," + msg;
+        });
+
+        $('document').ready(()=>{
+            // socket.emit('setup');
+            const playbtn = document.getElementById("PLAY");
+            playbtn.addEventListener('click',() => {
+                socket.emit('play');
+            });
+            const setupbtn = document.getElementById("SETUP");
+            setupbtn.addEventListener('click',() => {
+                socket.emit('setup');
+            });
+            const pausebtn = document.getElementById("PAUSE");
+            pausebtn.addEventListener('click',() => {
+                socket.emit('pause');
+            });
+        });
+    </script>
+</body>
+</html>

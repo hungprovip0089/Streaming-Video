@@ -1,0 +1,33 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    background-color : rgba(80, 80, 80, 0.925);
+    text-align: center;
+    font-family: cursive;
+  }
+  
+  button{
+    display: inline;
+    width: 15%;
+    height: 30px;
+    background: rgb(4, 197, 68);
+    border-radius : 5px;
+    border: 0px;
+    font-size: 15px;
+    font-family: cursive;
+    cursor: pointer;
+  }
+  
+  button:hover{
+    opacity: 0.7;
+  }
+  
+  img{
+    width:45.5%;
+  }
+  
+  #header{
+    font-size: 20px;
+    color: rgb(56, 166, 240);
+  }
